@@ -3,6 +3,8 @@
  */
 package com.soumyadeep.array;
 
+import java.util.HashSet;
+
 /**
  * @author y0qtjag
  * Given an array of distinct integers. The task is to count all the triplets such that sum of two elements equals the third element.
@@ -40,7 +42,29 @@ public class CountTheTriplets {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		int arr[] = {1,5,3,2};
+		System.out.println(countThetriplets(arr));
+	}
+	
+	public static int countThetriplets(int nums[]){
+		HashSet<Integer> lookupSet=addToLookupTable(nums);
+		int tripletCount=0;
+		for(int i=0;i<nums.length;i++){
+			for(int j=i+1;j<nums.length;j++){
+				if(lookupSet.contains(nums[i]+nums[j])){
+					tripletCount++;
+				}
+			}
+		}
+		return tripletCount>0?tripletCount:-1;
+	}
+	
+	public static HashSet<Integer> addToLookupTable(int nums[]){
+		HashSet<Integer> lookupSet=new HashSet<>();
+		for(int num : nums){
+			lookupSet.add(num);
+		}
+		return lookupSet;
 	}
 
 }
