@@ -93,6 +93,23 @@ public class CustomLinkedList {
 		}
 		return head;
 	}
+	
+	public static CustomLinkedList reverseList(CustomLinkedList list){
+		CustomLinkedList head=list;
+		CustomLinkedList tail=head;
+		CustomLinkedList first=list;
+		CustomLinkedList second=first.next;
+		while(second!=null){
+			CustomLinkedList temp=second.next;
+			second.next=first;
+			first=second;
+			second=temp;
+		}
+		head.next=null;
+		head=first;
+		
+		return head;
+	}
 
 	/** listLength() method fetches the length of the LinkedList */
 	public static int listLength(CustomLinkedList list) {
@@ -162,6 +179,8 @@ public class CustomLinkedList {
 		myLinkedList = deleteFromAPosition(myLinkedList,5);
 		printList(myLinkedList);
 		
+		myLinkedList = reverseList(myLinkedList);
+		printList(myLinkedList);
 		
 		
 	}
