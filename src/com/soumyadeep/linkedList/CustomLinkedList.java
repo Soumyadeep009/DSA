@@ -2,23 +2,20 @@ package com.soumyadeep.linkedList;
 
 public class CustomLinkedList {
 
-	private int value;
-	private CustomLinkedList next;
-	private int length;
+	int value;
+	CustomLinkedList next;
+	int length;
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-	
-	public CustomLinkedList(int value) {
+	CustomLinkedList(int value) {
 		this.value=value;
 		this.next=null;
 		this.length++;
 	}
 	
-	public void append(int value){
-		
+	public static void main(String args[]){
+		CustomLinkedList myLinkedList = new CustomLinkedList(10);
+		System.out.println(myLinkedList.value);
+		System.out.println(myLinkedList.length);
 	}
 
 }
