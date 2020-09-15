@@ -110,6 +110,19 @@ public class CustomLinkedList {
 		
 		return head;
 	}
+	
+	public static CustomLinkedList reverseListRecursion(CustomLinkedList head){
+		if(head == null) { 
+            return head; 
+        } 
+        if(head.next == null) { 
+            return head; 
+        } 
+        CustomLinkedList newHeadNode = reverseListRecursion(head.next); 
+        head.next.next = head; 
+        head.next = null;   
+        return newHeadNode;
+	}
 
 	/** listLength() method fetches the length of the LinkedList */
 	public static int listLength(CustomLinkedList list) {
@@ -179,7 +192,7 @@ public class CustomLinkedList {
 		myLinkedList = deleteFromAPosition(myLinkedList,5);
 		printList(myLinkedList);
 		
-		myLinkedList = reverseList(myLinkedList);
+		myLinkedList = reverseListRecursion(myLinkedList);
 		printList(myLinkedList);
 		
 		
