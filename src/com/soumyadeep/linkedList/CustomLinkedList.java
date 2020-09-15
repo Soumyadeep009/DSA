@@ -1,7 +1,5 @@
 package com.soumyadeep.linkedList;
 
-import java.util.LinkedList;
-
 public class CustomLinkedList {
 
 	int value;
@@ -49,34 +47,54 @@ public class CustomLinkedList {
 			}
 			newNode.next = list.next;
 			list.next = newNode;
-			head=list;
+			head = list;
 		}
 		return head;
 	}
-	
+
 	/** Deletes the last node of the LinkedList */
-	public static CustomLinkedList deleteFromLast(CustomLinkedList list){
-		CustomLinkedList head=list;
-		if(list!=null){
-			while(list.next.next!=null){
-				list=list.next;
+	public static CustomLinkedList deleteFromLast(CustomLinkedList list) {
+		CustomLinkedList head = list;
+		if (list != null) {
+			while (list.next.next != null) {
+				list = list.next;
 			}
-			list.next=null;
-		}
-		return head;
-	}
-	
-	public static CustomLinkedList deleteFromFirst(CustomLinkedList list){
-		CustomLinkedList head=list;
-		if(list!=null){
-			list=list.next;
-			head=list;
+			list.next = null;
 		}
 		return head;
 	}
 
 	
-	/** listLength() method fetches the length of the LinkedList*/
+	/** Deletes the first node of the Linked List */
+	public static CustomLinkedList deleteFromFirst(CustomLinkedList list) {
+		CustomLinkedList head = list;
+		if (list != null) {
+			list = list.next;
+			head = list;
+		}
+		return head;
+	}
+
+	/**
+	 * Method Deletes a node in a given position of the LinkedList. Position is
+	 * always index+1. First node of a list has index=0 and position=1
+	 */
+	public static CustomLinkedList deleteFromAPosition(CustomLinkedList list,int position) {
+		CustomLinkedList head = list;
+		if (position > listLength(list)) {
+			list = deleteFromLast(list);
+		} else {
+			int i = 1;
+			while (i < position - 1) {
+				list = list.next;
+				i++;
+			}
+			list.next=list.next.next;
+		}
+		return head;
+	}
+
+	/** listLength() method fetches the length of the LinkedList */
 	public static int listLength(CustomLinkedList list) {
 		int length = 0;
 		while (list != null) {
@@ -86,10 +104,9 @@ public class CustomLinkedList {
 		return length;
 	}
 
-	
-	/** PrintList method prints all the nodes of the LinkedList*/
+	/** PrintList method prints all the nodes of the LinkedList */
 	public static void printList(CustomLinkedList myList) {
-		if(myList!=null){
+		if (myList != null) {
 			while (myList.next != null) {
 				System.out.print(myList.value + "->");
 				myList = myList.next;
@@ -129,15 +146,24 @@ public class CustomLinkedList {
 		myLinkedList = insert(head, 1001, 99);
 		head = myLinkedList;
 		printList(head);
-		
+
 		myLinkedList = deleteFromLast(head);
 		printList(myLinkedList);
+
+		myLinkedList = deleteFromFirst(myLinkedList);
+		myLinkedList = deleteFromFirst(myLinkedList);
+		myLinkedList = deleteFromFirst(myLinkedList);
+		myLinkedList = deleteFromFirst(myLinkedList);
+		printList(myLinkedList);
 		
-		myLinkedList = deleteFromFirst(myLinkedList);
-		myLinkedList = deleteFromFirst(myLinkedList);
-		myLinkedList = deleteFromFirst(myLinkedList);
-		myLinkedList = deleteFromFirst(myLinkedList);
-		printList(myLinkedList);		
+		
+		myLinkedList = deleteFromAPosition(myLinkedList,9);
+		printList(myLinkedList);
+		myLinkedList = deleteFromAPosition(myLinkedList,5);
+		printList(myLinkedList);
+		
+		
+		
 	}
 
 }
