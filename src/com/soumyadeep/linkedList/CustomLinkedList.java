@@ -1,5 +1,7 @@
 package com.soumyadeep.linkedList;
 
+import java.util.LinkedList;
+
 public class CustomLinkedList {
 
 	int value;
@@ -47,6 +49,7 @@ public class CustomLinkedList {
 			}
 			newNode.next = list.next;
 			list.next = newNode;
+			head=list;
 		}
 		return head;
 	}
@@ -62,6 +65,15 @@ public class CustomLinkedList {
 		}
 		return head;
 	}
+	
+	public static CustomLinkedList deleteFromFirst(CustomLinkedList list){
+		CustomLinkedList head=list;
+		if(list!=null){
+			list=list.next;
+			head=list;
+		}
+		return head;
+	}
 
 	
 	/** listLength() method fetches the length of the LinkedList*/
@@ -74,6 +86,8 @@ public class CustomLinkedList {
 		return length;
 	}
 
+	
+	/** PrintList method prints all the nodes of the LinkedList*/
 	public static void printList(CustomLinkedList myList) {
 		if(myList!=null){
 			while (myList.next != null) {
@@ -119,6 +133,11 @@ public class CustomLinkedList {
 		myLinkedList = deleteFromLast(head);
 		printList(myLinkedList);
 		
+		myLinkedList = deleteFromFirst(myLinkedList);
+		myLinkedList = deleteFromFirst(myLinkedList);
+		myLinkedList = deleteFromFirst(myLinkedList);
+		myLinkedList = deleteFromFirst(myLinkedList);
+		printList(myLinkedList);		
 	}
 
 }
