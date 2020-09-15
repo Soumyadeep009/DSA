@@ -4,7 +4,6 @@ public class CustomLinkedList {
 
 	int value;
 	CustomLinkedList next;
-	int length;
 
 	CustomLinkedList(int value) {
 		this.value = value;
@@ -12,13 +11,18 @@ public class CustomLinkedList {
 	}
 	
 	public static CustomLinkedList add(CustomLinkedList list, int value){
-		
 		while(list.next!=null){
 			list=list.next;
 		}
 		CustomLinkedList newNode=new CustomLinkedList(value);
 		list.next=newNode;
 		return list;
+	}
+	
+	public static CustomLinkedList prepend(CustomLinkedList list, int value){
+		CustomLinkedList newNode=new CustomLinkedList(value);
+		newNode.next=list;
+		return newNode;
 	}
 	
 	public static void printList(CustomLinkedList myList){
@@ -37,12 +41,6 @@ public class CustomLinkedList {
 		//System.out.println(myLinkedList.value);
 
 		/**
-		 * Tail is the pointer to the end of the List. Since there is only one
-		 * node, so the first node is the last node.
-		 */
-		CustomLinkedList tail = head;
-
-		/**
 		 * Note if we change the value of head, the value of the first node
 		 * changes too.
 		 */
@@ -51,8 +49,12 @@ public class CustomLinkedList {
 		System.out.println(head.value);
 		System.out.println(myLinkedList.length);*/
 		for(int i=1;i<=8;i++){
-			myLinkedList=CustomLinkedList.add(myLinkedList, i*2);
+			myLinkedList=CustomLinkedList.add(head, i*2);
 		}
+		printList(head);
+		
+		myLinkedList=CustomLinkedList.prepend(head, 73);
+		head=myLinkedList;
 		printList(head);
 	}
 
