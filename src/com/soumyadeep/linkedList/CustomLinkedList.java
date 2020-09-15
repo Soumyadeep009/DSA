@@ -50,6 +50,18 @@ public class CustomLinkedList {
 		}
 		return head;
 	}
+	
+	/** Deletes the last node of the LinkedList */
+	public static CustomLinkedList deleteFromLast(CustomLinkedList list){
+		CustomLinkedList head=list;
+		if(list!=null){
+			while(list.next.next!=null){
+				list=list.next;
+			}
+			list.next=null;
+		}
+		return head;
+	}
 
 	
 	/** listLength() method fetches the length of the LinkedList*/
@@ -63,11 +75,13 @@ public class CustomLinkedList {
 	}
 
 	public static void printList(CustomLinkedList myList) {
-		while (myList.next != null) {
-			System.out.print(myList.value + "->");
-			myList = myList.next;
+		if(myList!=null){
+			while (myList.next != null) {
+				System.out.print(myList.value + "->");
+				myList = myList.next;
+			}
+			System.out.println(myList.value);
 		}
-		System.out.println(myList.value);
 	}
 
 	public static void main(String args[]) {
@@ -101,6 +115,10 @@ public class CustomLinkedList {
 		myLinkedList = insert(head, 1001, 99);
 		head = myLinkedList;
 		printList(head);
+		
+		myLinkedList = deleteFromLast(head);
+		printList(myLinkedList);
+		
 	}
 
 }
