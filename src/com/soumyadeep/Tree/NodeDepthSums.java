@@ -1,7 +1,5 @@
 package com.soumyadeep.Tree;
 
-import com.soumyadeep.Tree.BranchSumOfBinaryTree.BinaryTree;
-
 public class NodeDepthSums {
 
 	public static void main(String[] args) {
@@ -23,8 +21,18 @@ public class NodeDepthSums {
 	    // Write your code here.
 		if(root == null)
 			return -1;
-		else
-			return nodeDepths(root, 0);
+		else{
+			int depthOfCurrentNode =  nodeDepths(root, 0);
+			int depthOfLeftChild=0;
+			int depthOfRightChild=0;
+			if(root.left!=null){
+				depthOfLeftChild = nodeDepths(root.left);
+			}
+			if(root.right != null){
+				depthOfRightChild = nodeDepths(root.right);
+			}
+			return depthOfCurrentNode+depthOfLeftChild+depthOfRightChild;
+		}
 	}
 
 	public static int nodeDepths(BinaryTree node,int currentDepth) {
