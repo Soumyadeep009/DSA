@@ -29,13 +29,13 @@ public class MyStack {
 	int pop() {
 		if (s.isEmpty())
 			return -1;
-		int t = s.pop();
-		if (t < minEle) {
-			int k = minEle;
-			minEle = 2 * minEle - t;
-			return k;
+		int top = s.pop();
+		if (top < minEle) {
+			int currentMin = minEle;
+			minEle = 2 * minEle - top;
+			return currentMin;
 		} else {
-			return t;
+			return top;
 		}
 	}
 
