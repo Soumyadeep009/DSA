@@ -23,7 +23,11 @@ public class MyStack {
 	}
 
 	int getMin() {
-		return minEle;
+		if(s.empty()){
+			return -1;
+		}else{
+			return minEle;
+		}
 	}
 
 	int pop() {
