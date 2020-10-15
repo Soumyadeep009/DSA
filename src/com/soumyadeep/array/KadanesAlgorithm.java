@@ -35,8 +35,8 @@ public class KadanesAlgorithm {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		//int num[]={1,2,3,-2,5};
-		int num[]={-1,-2,-3,-4};
+		int num[]={1,2,3,-2,5};
+		//int num[]={-1,-2,-3,-4};
 		System.out.println(maxSubArray1(num));
 	}
 	

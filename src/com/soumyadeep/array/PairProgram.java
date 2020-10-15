@@ -7,14 +7,15 @@ import java.util.Set;
 public class PairProgram {
 
 	public static void main(String[] args) {
-		int arr[] = { 1, 2, 4, 4 };
+		int arr[] = { 1, 2, 4, 5 };
 		int sum = 9;
-		int[] found = HasPairThenReturnThePair(arr, sum);
-		if(found.length==0){
+		//int[] found = HasPairThenReturnThePair(arr, sum);
+		System.out.println(HasPairThenReturnTrueOrFalse2(arr, sum));
+		/*if(found.length==0){
 			System.out.println("Not Found");
 		}else 
 			System.out.println(found[0] + " " + found[1]);
-		
+		*/
 	}
 	
 	public static boolean HasPairThenReturnTrueOrFalse(int arr[], int sum) {
@@ -25,6 +26,17 @@ public class PairProgram {
 				return true;
 			}
 			complementSet.add(arr[i]);
+		}
+		return false;
+	}
+	public static boolean HasPairThenReturnTrueOrFalse2(int arr[], int sum) {
+		Set<Integer> complementSet = new HashSet<>();
+		for (int i = 0; i < arr.length; i++) {
+			int comp = sum - arr[i];
+			if (complementSet.contains(arr[i])) {
+				return true;
+			}
+			complementSet.add(comp);
 		}
 		return false;
 	}
