@@ -4,6 +4,7 @@ import java.util.Queue;
 public class ValidBST {
 
 	public static void main(String[] args) {
+		//Test
 		// TODO Auto-generated method stub
 		ValidBST bst=new ValidBST();
 		ValidBST.TreeNode node = bst.new TreeNode(5);
